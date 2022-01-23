@@ -4,7 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 page_url = "https://www.nseindia.com/get-quotes/equity?symbol=LT"
-chart_data_url = "https://www.nseindia.com/api/chart-databyindex"
+chart_data_url = "https://www.nseindia.com/api/chart-databyindex"  #www.nyse.com
 
 s= Session()
 
@@ -23,7 +23,7 @@ def fetch_data(symbol):
     return [[datetime.utcfromtimestamp(d[0]/1000),d[1]] for d in data]
 
 d = fetch_data("MARUTI")
-print(d)
+
 df = pd.DataFrame(d)
 df.columns = ['Time', "Price"]
 df.index = df['Time'].dt.time
